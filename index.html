@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arturo Mondae</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #f8f8f8 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        #showcase {
+            min-height: 400px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding-top: 100px;
+        }
+        #showcase h1 {
+            font-size: 55px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #000;
+        }
+        #showcase p {
+            font-size: 20px;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px 0;
+            background: #444;
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .skills, .projects, .contact {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .skills div, .projects div, .contact div {
+            flex-basis: 30%;
+            margin: 10px 0;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: #333;
+            color: #fff;
+        }
+        .neon {
+            color: #e600e6;
+            text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1 class="neon">Arturo Mondae</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1 class="neon">Bienvenido a mi página personal</h1>
+            <p>Explora mis proyectos, habilidades y más</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="sobre-mi" class="section">
+            <h2 class="neon">Sobre mí</h2>
+            <p>Hola, soy Arturo Mondae. Soy [tu profesión] con pasión por [tus hobbies/intereses]. Me encanta [descripción adicional sobre ti].</p>
+        </section>
+
+        <section id="proyectos" class="section">
+            <h2 class="neon">Proyectos</h2>
+            <div class="projects">
+                <div>
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción breve del proyecto 1.</p>
+                </div>
+                <div>
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción breve del proyecto 2.</p>
+                </div>
+                <div>
+                    <h3>Proyecto 3</h3>
+                    <p>Descripción breve del proyecto 3.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades" class="section">
+            <h2 class="neon">Habilidades</h2>
+            <div class="skills">
+                <div>
+                    <h3>Habilidad 1</h3>
+                    <p>Descripción de habilidad 1.</p>
+                </div>
+                <div>
+                    <h3>Habilidad 2</h3>
+                    <p>Descripción de habilidad 2.</p>
+                </div>
+                <div>
+                    <h3>Habilidad 3</h3>
+                    <p>Descripción de habilidad 3.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section">
+            <h2 class="neon">Blog</h2>
+            <p>Próximamente: Artículos interesantes sobre mis proyectos y más.</p>
+        </section>
+
+        <section id="contacto" class="section">
+            <h2 class="neon">Contacto</h2>
+            <div class="contact">
+                <div>
+                    <h3>Email</h3>
+                    <p>arturo.mondae@example.com</p>
+                </div>
+                <div>
+                    <h3>Teléfono</h3>
+                    <p>+123 456 7890</p>
+                </div>
+                <div>
+                    <h3>Redes Sociales</h3>
+                    <p><a href="#" class="neon">LinkedIn</a> | <a href="#" class="neon">Twitter</a> | <a href="#" class="neon">GitHub</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Arturo Mondae. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
