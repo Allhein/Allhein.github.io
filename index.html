@@ -13,7 +13,7 @@
             color: #fff;
             margin: 0;
             padding: 0;
-            opacity: 0.9; /* Ajustar la opacidad del fondo del sitio */
+            opacity: 0.9;
         }
         .container {
             width: 80%;
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
         header {
-            background: rgba(51, 51, 51, 0.8); /* Fondo del encabezado con transparencia */
+            background: rgba(51, 51, 51, 0.8);
             color: #fff;
             padding-top: 30px;
             min-height: 70px;
@@ -36,31 +36,29 @@
         header ul {
             padding: 0;
             list-style: none;
+            text-align: center; /* Centrar los enlaces */
         }
         header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
+            display: inline-block; /* Cambiar de float a inline-block */
+            margin-right: 20px; /* Añadir un margen derecho */
         }
         header #branding {
-            float: left;
+            float: none; /* Eliminar float */
+            text-align: center; /* Centrar el texto */
         }
         header #branding h1 {
             margin: 0;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
+            font-size: 24px; /* Ajustar el tamaño de fuente */
         }
         #showcase {
-            min-height: 400px;
-            background: rgba(51, 51, 51, 0.8); /* Fondo del showcase con transparencia */
+            min-height: 300px;
+            background: rgba(51, 51, 51, 0.8);
             color: #fff;
             text-align: center;
             padding-top: 100px;
         }
         #showcase h1 {
-            font-size: 55px;
+            font-size: 40px;
             margin-top: 0;
             margin-bottom: 10px;
             text-shadow: 2px 2px #000;
@@ -71,11 +69,7 @@
         .section {
             padding: 20px;
             margin: 20px 0;
-            background: rgba(68, 68, 68, 0.8); /* Fondo de las secciones con transparencia */
-            display: none;
-        }
-        .section.active {
-            display: block;
+            background: rgba(68, 68, 68, 0.8);
         }
         .section h2 {
             text-align: center;
@@ -104,12 +98,45 @@
         footer {
             padding: 20px;
             text-align: center;
-            background: rgba(51, 51, 51, 0.8); /* Fondo del pie de página con transparencia */
+            background: rgba(51, 51, 51, 0.8);
             color: #fff;
         }
         .neon {
             color: #e600e6;
             text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
+        }
+
+        /* Reglas de medios para dispositivos móviles */
+        @media (max-width: 768px) {
+            header {
+                padding-top: 20px; /* Reducir el espacio superior */
+                min-height: auto; /* Eliminar la altura mínima */
+            }
+            header li {
+                margin-right: 10px; /* Reducir el margen derecho */
+            }
+            header #branding h1 {
+                font-size: 20px; /* Reducir el tamaño de fuente */
+            }
+            #showcase {
+                min-height: 200px; /* Reducir la altura */
+                padding-top: 80px; /* Reducir el espacio superior */
+            }
+            #showcase h1 {
+                font-size: 30px; /* Reducir el tamaño de fuente */
+            }
+            #showcase p {
+                font-size: 16px; /* Reducir el tamaño de fuente */
+            }
+            .section h2 {
+                font-size: 20px; /* Reducir el tamaño de fuente */
+            }
+            .section p {
+                font-size: 16px; /* Reducir el tamaño de fuente */
+            }
+            .links div {
+                flex-basis: 100%; /* Cambiar el ancho al 100% para que ocupe toda la fila */
+            }
         }
     </style>
 </head>
