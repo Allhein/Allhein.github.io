@@ -45,13 +45,13 @@
             flex-grow: 1; /* Hacer que el branding ocupe todo el espacio disponible */
         }
         header nav {
-            display: block; /* Mostrar el menú en dispositivos móviles */
+            display: none; /* Ocultar el menú en dispositivos móviles */
         }
         #menu-toggle {
             display: none; /* Ocultar el botón del menú en dispositivos de tamaño grande */
         }
         #menu-toggle:checked + nav {
-            display: none; /* Ocultar el menú cuando el botón está marcado */
+            display: block; /* Mostrar el menú cuando el botón está marcado */
         }
         #showcase {
             min-height: 400px;
@@ -122,11 +122,11 @@
                 flex-grow: 0; /* Restaurar el tamaño original */
             }
             header nav {
-                display: none; /* Ocultar el menú en dispositivos móviles */
+                display: block; /* Mostrar el menú en dispositivos móviles */
             }
             header li {
-                display: block; /* Mostrar los elementos del menú en una lista vertical */
-                margin: 10px 0; /* Agregar espacio entre los elementos del menú */
+                display: block; /* Mostrar los elementos del menú como bloques */
+                margin: 10px 0; /* Espacio entre los elementos del menú */
             }
             #menu-toggle {
                 display: block; /* Mostrar el botón del menú en dispositivos móviles */
