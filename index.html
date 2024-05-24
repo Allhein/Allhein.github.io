@@ -36,21 +36,22 @@
         header ul {
             padding: 0;
             list-style: none;
+            display: flex; /* Utilizar flexbox para alinear los elementos del menú */
         }
         header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
+            margin-right: 20px;
         }
         header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
+            flex-grow: 1; /* Hacer que el branding ocupe todo el espacio disponible */
         }
         header nav {
-            float: right;
-            margin-top: 10px;
+            display: block; /* Mostrar el menú en dispositivos móviles */
+        }
+        #menu-toggle {
+            display: none; /* Ocultar el botón del menú en dispositivos de tamaño grande */
+        }
+        #menu-toggle:checked + nav {
+            display: none; /* Ocultar el menú cuando el botón está marcado */
         }
         #showcase {
             min-height: 400px;
@@ -111,11 +112,39 @@
             color: #e600e6;
             text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
         }
+
+        /* Reglas de medios para dispositivos móviles */
+        @media (max-width: 768px) {
+            header ul {
+                display: none; /* Ocultar el menú en dispositivos de tamaño grande */
+            }
+            header #branding {
+                flex-grow: 0; /* Restaurar el tamaño original */
+            }
+            header nav {
+                display: none; /* Ocultar el menú en dispositivos móviles */
+            }
+            header li {
+                display: block; /* Mostrar los elementos del menú en una lista vertical */
+                margin: 10px 0; /* Agregar espacio entre los elementos del menú */
+            }
+            #menu-toggle {
+                display: block; /* Mostrar el botón del menú en dispositivos móviles */
+                order: -1; /* Mover el botón del menú al principio del encabezado */
+            }
+            #menu-toggle + nav {
+                display: none; /* Ocultar el menú cuando el botón está marcado */
+            }
+            #menu-toggle:checked + nav {
+                display: block; /* Mostrar el menú cuando el botón está marcado */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
+            <input type="checkbox" id="menu-toggle"> <!-- Botón del menú -->
             <div id="branding">
                 <h1 class="neon">Arturo Mondae</h1>
             </div>
