@@ -1,147 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Arturo Mondae</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-image: url('capibara.jpg');
-                background-size: cover;
-                background-position: center;
-                color: #fff;
-                margin: 0;
-                padding: 0;
-                opacity: 0.9;
-            }
-            .container {
-                width: 90%; /* Ajustar el ancho del contenedor principal */
-                margin: auto;
-                overflow: hidden;
-            }
-            header {
-                background: rgba(51, 51, 51, 0.8);
-                color: #fff;
-                padding-top: 20px; /* Reducir el espacio superior */
-                min-height: 50px; /* Reducir la altura del encabezado */
-                border-bottom: #f8f8f8 3px solid;
-            }
-            header a {
-                color: #fff;
-                text-decoration: none;
-                text-transform: uppercase;
-                font-size: 14px; /* Reducir el tamaño de fuente */
-            }
-            header ul {
-                padding: 0;
-                list-style: none;
-            }
-            header li {
-                display: inline-block; /* Cambiar de float a display inline-block */
-                margin-right: 10px; /* Añadir un margen derecho */
-            }
-            header #branding {
-                float: none; /* Eliminar float */
-                text-align: center; /* Centrar el texto */
-                margin-bottom: 10px; /* Añadir un margen inferior */
-            }
-            header #branding h1 {
-                margin: 0;
-            }
-            header nav {
-                float: none; /* Eliminar float */
-                text-align: center; /* Centrar los enlaces */
-                margin-top: 10px;
-            }
-            #showcase {
-                min-height: 300px; /* Reducir la altura del showcase */
-                background: rgba(51, 51, 51, 0.8);
-                color: #fff;
-                text-align: center;
-                padding-top: 80px; /* Reducir el espacio superior */
-            }
-            #showcase h1 {
-                font-size: 40px; /* Reducir el tamaño de fuente */
-                margin-top: 0;
-                margin-bottom: 10px;
-                text-shadow: 2px 2px #000;
-            }
-            #showcase p {
-                font-size: 16px; /* Reducir el tamaño de fuente */
-            }
-            .section {
-                padding: 20px;
-                margin: 20px 0;
-                background: rgba(68, 68, 68, 0.8);
-                display: none;
-            }
-            .section.active {
-                display: block;
-            }
-            .section h2 {
-                text-align: center;
-                margin-bottom: 20px;
-                text-transform: uppercase;
-                font-size: 20px; /* Reducir el tamaño de fuente */
-            }
-            .section p {
-                font-size: 14px; /* Reducir el tamaño de fuente */
-                line-height: 1.5;
-            }
-            .links {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-            .links div {
-                flex-basis: 30%;
-                margin: 10px 0;
-                text-align: center;
-            }
-            .links img {
-                max-width: 100%;
-                border: 2px solid #fff;
-                border-radius: 5px;
-            }
-            footer {
-                padding: 20px;
-                text-align: center;
-                background: rgba(51, 51, 51, 0.8);
-                color: #fff;
-            }
-            .neon {
-                color: #e600e6;
-                text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
-            }
-    
-            /* Reglas de medios para dispositivos móviles */
-            @media (max-width: 768px) {
-                .container {
-                    width: 95%; /* Reducir el ancho del contenedor principal */
-                }
-                header a {
-                    font-size: 12px; /* Reducir el tamaño de fuente */
-                }
-                #showcase {
-                    min-height: 200px; /* Reducir la altura del showcase */
-                    padding-top: 60px; /* Reducir el espacio superior */
-                }
-                #showcase h1 {
-                    font-size: 30px; /* Reducir el tamaño de fuente */
-                }
-                #showcase p {
-                    font-size: 14px; /* Reducir el tamaño de fuente */
-                }
-                .section h2 {
-                    font-size: 18px; /* Reducir el tamaño de fuente */
-                }
-                .section p {
-                    font-size: 12px; /* Reducir el tamaño de fuente */
-                }
-            }
-        </style>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arturo Mondae</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('capibara.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            opacity: 0.9; /* Ajustar la opacidad del fondo del sitio */
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: rgba(51, 51, 51, 0.8); /* Fondo del encabezado con transparencia */
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #f8f8f8 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        #showcase {
+            min-height: 400px;
+            background: rgba(51, 51, 51, 0.8); /* Fondo del showcase con transparencia */
+            color: #fff;
+            text-align: center;
+            padding-top: 100px;
+        }
+        #showcase h1 {
+            font-size: 55px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #000;
+        }
+        #showcase p {
+            font-size: 20px;
+        }
+        .section {
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(68, 68, 68, 0.8); /* Fondo de las secciones con transparencia */
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .links {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .links div {
+            flex-basis: 30%;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .links img {
+            max-width: 100%;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: rgba(51, 51, 51, 0.8); /* Fondo del pie de página con transparencia */
+            color: #fff;
+        }
+        .neon {
+            color: #e600e6;
+            text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
+        }
+    </style>
+</head>
 <body>
     <header>
         <div class="container">
