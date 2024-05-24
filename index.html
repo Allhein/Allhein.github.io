@@ -36,25 +36,21 @@
         header ul {
             padding: 0;
             list-style: none;
-            display: flex; /* Utilizar flexbox para alinear los elementos del menú */
         }
         header li {
-            margin-right: 20px;
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
         }
         header #branding {
-            flex-grow: 1; /* Hacer que el branding ocupe todo el espacio disponible */
+            float: left;
         }
         header #branding h1 {
             margin: 0;
         }
         header nav {
-            display: none; /* Ocultar el menú en dispositivos móviles */
-        }
-        #menu-toggle {
-            display: none; /* Ocultar el botón del menú en dispositivos de tamaño grande */
-        }
-        #menu-toggle:checked + nav {
-            display: block; /* Mostrar el menú cuando el botón está marcado */
+            float: right;
+            margin-top: 10px;
         }
         #showcase {
             min-height: 400px;
@@ -115,37 +111,11 @@
             color: #e600e6;
             text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
         }
-
-        /* Reglas de medios para dispositivos móviles */
-        @media (max-width: 768px) {
-            header ul {
-                display: none; /* Ocultar el menú en dispositivos de tamaño grande */
-            }
-            header #branding {
-                flex-grow: 0; /* Restaurar el tamaño original */
-            }
-            header nav {
-                display: block; /* Mostrar el menú en dispositivos móviles */
-            }
-            header li {
-                display: block; /* Mostrar los elementos del menú en una lista vertical */
-                margin: 10px 0; /* Agregar espacio entre los elementos del menú */
-            }
-            #menu-toggle {
-                display: block; /* Mostrar el botón del menú en dispositivos móviles */
-            }
-            #menu-toggle-label {
-                display: block; /* Mostrar el texto del botón del menú */
-                cursor: pointer;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <input type="checkbox" id="menu-toggle"> <!-- Checkbox para controlar el estado del menú -->
-            <label for="menu-toggle" id="menu-toggle-label">&#9776;</label> <!-- Icono del menú -->
             <div id="branding">
                 <h1 class="neon">Arturo Mondae</h1>
             </div>
