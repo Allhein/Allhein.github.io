@@ -308,6 +308,21 @@
             }
         }
 
+        function search() {
+            var input = document.getElementById('search-input').value.toLowerCase();
+            var proyectosList = document.getElementById('proyectos-list');
+            var proyectos = proyectosList.getElementsByTagName('div');
+
+            Array.from(proyectos).forEach(function(proyecto) {
+                var title = proyecto.getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.indexOf(input) > -1) {
+                    proyecto.style.display = '';
+                } else {
+                    proyecto.style.display = 'none';
+                }
+            });
+        }
+
         // Mostrar la primera sección al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             showSection('Bien-venido');
