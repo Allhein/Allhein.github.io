@@ -88,11 +88,12 @@
         }
         .links {
             display: flex;
+            flex-direction: column; /* Cambiado a columna */
             justify-content: space-around;
             flex-wrap: wrap;
         }
         .links div {
-            flex-basis: 30%;
+            flex-basis: 100%; /* Ocupa el 100% del contenedor */
             margin: 10px 0;
             text-align: center;
         }
@@ -100,6 +101,22 @@
             max-width: 100%;
             border: 2px solid #fff;
             border-radius: 5px;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid #fff;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .pagination a.active {
+            background-color: #e600e6;
+            border-color: #e600e6;
         }
         footer {
             padding: 20px;
@@ -144,31 +161,11 @@
 
         <section id="proyectos" class="section">
             <h2 class="neon">Proyectos</h2>
-            <div class="links">
-                <div>
-                    <a href="https://cuty.io/3TwMHP3bbm">
-                        <img src="https://tutorialesdecalidad.com/wp-content/uploads/2023/11/image-1.png" alt="Mediafire">
-                        <h3>mediafire</h3>
-                    </a>
-                    <p>Office.</p>
-                    <p>Contraseña: DIEKROLO_YT_WAKANDA_FOREVER</p>
-                </div>
-                <div>
-                    <a href="https://cuty.io/Ec80q">
-                        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b1f444f5-ca6c-4df3-8c44-ec6e0276f5ac/d7mg13s-036bcbe7-b460-42f2-a75d-da9d2cad8594.png/v1/fit/w_512,h_512/adobe_photoshop_icon_v2_by_dudekpro_d7mg13s-375w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvYjFmNDQ0ZjUtY2E2Yy00ZGYzLThjNDQtZWM2ZTAyNzZmNWFjXC9kN21nMTNzLTAzNmJjYmU3LWI0NjAtNDJmMi1hNzVkLWRhOWQyY2FkODU5NC5wbmciLCJ3aWR0aCI6Ijw9NTEyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.NKkd0edq5hTpaKVQoKvO_H41z4vxPCoaJB-OGlCyRcY" alt="Drive">
-                        <h3>Drive</h3>
-                    </a>
-                    <p>Photoshop.</p>
-                    <p>Contraseña: www.artistapirata.com</p>
-                    <p>Necesitas de Creative Cloud para que este programa funcione pulsa <a href="https://www.adobe.com/pe/creativecloud/desktop-app.html">aquí</a> para descargarlo.</p>
-                </div>
-                <div>
-                    <a href="https://www.proyecto3.com">
-                        <img src="https://via.placeholder.com/150" alt="Proyecto 3">
-                        <h3>Proyecto 3</h3>
-                    </a>
-                    <p>Descripción breve del proyecto 3.</p>
-                </div>
+            <div class="links" id="proyectos-list">
+                <!-- Los elementos del proyecto se insertarán aquí mediante JavaScript -->
+            </div>
+            <div class="pagination" id="pagination">
+                <!-- Los enlaces de paginación se insertarán aquí mediante JavaScript -->
             </div>
         </section>
 
@@ -189,7 +186,6 @@
                     <a href="https://discord.gg/wT9D2mqTkX">
                         <p>Discord</p>
                     </a>
-                    
                 </div>
                 <div>
                     <h3>Teléfono</h3>
@@ -204,6 +200,94 @@
     </footer>
 
     <script>
+        const proyectos = [
+            {
+                link: 'https://cuty.io/3TwMHP3bbm',
+                img: 'https://tutorialesdecalidad.com/wp-content/uploads/2023/11/image-1.png',
+                title: 'mediafire',
+                description: 'Office.',
+                password: 'Contraseña: DIEKROLO_YT_WAKANDA_FOREVER'
+            },
+            {
+                link: 'https://cuty.io/Ec80q',
+                img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b1f444f5-ca6c-4df3-8c44-ec6e0276f5ac/d7mg13s-036bcbe7-b460-42f2-a75d-da9d2cad8594.png/v1/fit/w_512,h_512/adobe_photoshop_icon_v2_by_dudekpro_d7mg13s-375w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvYjFmNDQ0ZjUtY2E2Yy00ZGYzLThjNDQtZWM2ZTAyNzZmNWFjXC9kN21nMTNzLTAzNmJjYmU3LWI0NjAtNDJmMi1hNzVkLWRhOWQyY2FkODU5NC5wbmciLCJ3aWR0aCI6Ijw9NTEyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.NKkd0edq5hTpaKVQoKvO_H41z4vxPCoaJB-OGlCyRcY',
+                title: 'Drive',
+                description: 'Photoshop.',
+                password: 'Contraseña: www.artistapirata.com',
+                additional: 'Necesitas de Creative Cloud para que este programa funcione pulsa <a href="https://www.adobe.com/pe/creativecloud/desktop-app.html">aquí</a> para descargarlo.'
+            },
+            {
+                link: 'https://cuty.io/Pg9G8',
+                img: 'https://via.placeholder.com/150',
+                title: 'Mediafire',
+                description: 'Adobe Illustrator.',
+                password: 'Contraseña: 1212'
+            },
+            {
+                link: 'https://cuty.io/l2ub8tD6',
+                img: 'https://gratisexpert.com/images/premiere.svg',
+                title: 'Terabox',
+                description: 'Premiere Pro.',
+                password: ''
+            },
+            {
+                link: 'https://cuty.io/vsG06gr1E',
+                img: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/4_Indesign_Adobe_logo_logos-512.png',
+                title: 'Terabox',
+                description: 'InDesign',
+                password: ''
+            }
+            // Añadir más proyectos aquí si es necesario
+        ];
+
+        const proyectosPerPage = 6;
+        let currentPage = 1;
+
+        function renderProyectos() {
+            const proyectosList = document.getElementById('proyectos-list');
+            proyectosList.innerHTML = '';
+
+            const start = (currentPage - 1) * proyectosPerPage;
+            const end = start + proyectosPerPage;
+            const proyectosToShow = proyectos.slice(start, end);
+
+            proyectosToShow.forEach(proyecto => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <a href="${proyecto.link}">
+                        <img src="${proyecto.img}" alt="${proyecto.title}">
+                        <h3>${proyecto.title}</h3>
+                    </a>
+                    <p>${proyecto.description}</p>
+                    <p>${proyecto.password}</p>
+                    ${proyecto.additional ? `<p>${proyecto.additional}</p>` : ''}
+                `;
+                proyectosList.appendChild(div);
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(proyectos.length / proyectosPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const a = document.createElement('a');
+                a.href = '#';
+                a.innerText = i;
+                a.className = i === currentPage ? 'active' : '';
+                a.onclick = (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    renderProyectos();
+                };
+                pagination.appendChild(a);
+            }
+        }
+
         function showSection(sectionId) {
             // Ocultar todas las secciones
             var sections = document.querySelectorAll('.section');
@@ -214,7 +298,17 @@
             // Mostrar la sección correspondiente al ID recibido
             var sectionToShow = document.getElementById(sectionId);
             sectionToShow.classList.add('active');
+
+            // Si se muestra la sección de proyectos, renderizar los proyectos
+            if (sectionId === 'proyectos') {
+                renderProyectos();
+            }
         }
+
+        // Mostrar la primera sección al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('Bien-venido');
+        });
     </script>
 </body>
 </html>
