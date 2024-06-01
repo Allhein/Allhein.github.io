@@ -299,6 +299,10 @@
                 section.classList.remove('active');
             });
 
+            
+            // Ocultar el showcase
+            document.getElementById('showcase').style.display = 'none';
+
             // Mostrar la sección correspondiente al ID recibido
             var sectionToShow = document.getElementById(sectionId);
             sectionToShow.classList.add('active');
