@@ -141,10 +141,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" onclick="showSection('Bien-venido')">Bien Venido🥵</a></li>
-                    <li><a href="#" onclick="showSection('proyectos')">Proyectos</a></li>
-                    <li><a href="#" onclick="showSection('blog')">Blog</a></li>
-                    <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
+                    <li><a href="#Bienvenido" onclick="showSection('Bien-venido')">Bien Venido🥵</a></li>
+                    <li><a href="#Proyectos" onclick="showSection('proyectos')">Proyectos</a></li>
+                    <li><a href="#Blog" onclick="showSection('blog')">Blog</a></li>
+                    <li><a href="#Contacto" onclick="showSection('contacto')">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -299,9 +299,6 @@
                 section.classList.remove('active');
             });
 
-            
-            // Ocultar el showcase
-            document.getElementById('showcase').style.display = 'none';
 
             // Mostrar la sección correspondiente al ID recibido
             var sectionToShow = document.getElementById(sectionId);
@@ -311,6 +308,9 @@
             if (sectionId === 'proyectos') {
                 renderProyectos();
             }
+
+            // Ocultar el showcase después de la primera carga
+            document.getElementById('showcase').style.display = 'none';
         }
 
         function filterProyectos() {
@@ -331,9 +331,10 @@
         }
 
         // Mostrar la primera sección al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            showSection('Bien-venido');
-        });
+        //document.addEventListener('DOMContentLoaded', function() {
+          //  showSection('Bien-venido');
+            
+        //});
     </script>
 </body>
 </html>
