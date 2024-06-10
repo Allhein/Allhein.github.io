@@ -206,38 +206,38 @@
     <script>
         const proyectos = [
             {
-                link: 'https://cuty.io/3TwMHP3bbm',
+                link: ['https://cuty.io/3TwMHP3bbm'],
                 img: 'https://tutorialesdecalidad.com/wp-content/uploads/2023/11/image-1.png',
-                title: 'mediafire',
+                title: ['mediafire'],
                 description: 'Office.',
                 password: 'Contraseña: DIEKROLO_YT_WAKANDA_FOREVER'
             },
             {
-                link: 'https://cuty.io/Ec80q',
+                link: ['https://cuty.io/Ec80q', 'https://cuty.io/gtxhhiPba'],
                 img: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b1f444f5-ca6c-4df3-8c44-ec6e0276f5ac/d7mg13s-036bcbe7-b460-42f2-a75d-da9d2cad8594.png/v1/fit/w_512,h_512/adobe_photoshop_icon_v2_by_dudekpro_d7mg13s-375w-2x.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvYjFmNDQ0ZjUtY2E2Yy00ZGYzLThjNDQtZWM2ZTAyNzZmNWFjXC9kN21nMTNzLTAzNmJjYmU3LWI0NjAtNDJmMi1hNzVkLWRhOWQyY2FkODU5NC5wbmciLCJ3aWR0aCI6Ijw9NTEyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.NKkd0edq5hTpaKVQoKvO_H41z4vxPCoaJB-OGlCyRcY',
-                title: 'Drive',
+                title: ['Drive', 'Mediafire'],
                 description: 'Photoshop.',
-                password: 'Contraseña: www.artistapirata.com',
+                password: 'Contraseña Drive: www.artistapirata.com <br>Contraseña Mediadrive: mastercitoyt',
                 additional: 'Necesitas de Creative Cloud para que este programa funcione pulsa <a href="https://www.adobe.com/pe/creativecloud/desktop-app.html">aquí</a> para descargarlo.'
             },
             {
-                link: 'https://cuty.io/Pg9G8',
+                link: ['https://cuty.io/Pg9G8'],
                 img: 'https://cdn.pixabay.com/photo/2022/11/16/21/06/adobe-illustrator-logo-7596806_960_720.png',
-                title: 'Mediafire',
+                title: ['Drive'],
                 description: 'Adobe Illustrator.',
-                password: 'Contraseña: 1212'
+                password: 'Contraseña: www.artistapirata.com'
             },
             {
-                link: 'https://cuty.io/l2ub8tD6',
+                link: ['https://cuty.io/l2ub8tD6'],
                 img: 'https://gratisexpert.com/images/premiere.svg',
-                title: 'Terabox.',
+                title: ['Terabox.'],
                 description: 'Premiere Pro.',
                 password: 'Trendras que descargar el software de Terabox para poder descargar el archivo'
             },
             {
-                link: 'https://cuty.io/vsG06gr1E',
+                link: ['https://cuty.io/vsG06gr1E'],
                 img: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/4_Indesign_Adobe_logo_logos-512.png',
-                title: 'Terabox',
+                title: ['Terabox'],
                 description: 'InDesign',
                 password: 'Trendras que descargar el software de Terabox para poder descargar el archivo'
             }
@@ -257,15 +257,20 @@
 
             proyectosToShow.forEach(proyecto => {
                 const div = document.createElement('div');
-                div.innerHTML = `
-                    <a href="${proyecto.link}">
-                        <img src="${proyecto.img}" alt="${proyecto.title}">
-                        <h3>${proyecto.title}</h3>
-                    </a>
-                    <p>${proyecto.description}</p>
-                    <p>${proyecto.password}</p>
-                    ${proyecto.additional ? `<p>${proyecto.additional}</p>` : ''}
-                `;
+                let content = `<img src="${proyecto.img}" alt="project image">`;
+                content += `<p>${proyecto.description}</p>`;
+                content += `<p>${proyecto.password}</p>`;
+                if (proyecto.additional) {
+                    content += `<p>${proyecto.additional}</p>`;
+                }
+                proyecto.title.forEach((title, index) => {
+                    content += `
+                        <a href="${proyecto.link[index]}">
+                            <h3>${title}</h3>
+                        </a>
+                    `;
+                });
+                div.innerHTML = content;
                 proyectosList.appendChild(div);
             });
 
