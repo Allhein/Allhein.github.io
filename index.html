@@ -26,48 +26,96 @@
     </header>
 
     <section id="showcase">
-        <div class="container">
-            <h1 class="neon">Wellcum Moderfokers</h1>
+        <div class="container showcase-inner">
+            <div class="hero-visual">
+                <!-- Neon SVG Animation inspired by provided bunny silhouette -->
+                <svg class="neon-svg" viewBox="0 0 420 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <filter id="glow2">
+                            <feGaussianBlur stdDeviation="4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Ears -->
+                    <path class="accent" d="M210 70 C210 25 245 25 245 75" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
+                    <path class="accent" d="M270 70 C270 25 305 25 305 75" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
+                    <!-- Hair/head profile -->
+                    <path class="bunny" d="M230 120 C210 120 200 140 200 165 C200 205 245 215 265 240 C275 252 280 265 280 280" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
+                    <!-- Shoulder to hand pose -->
+                    <path class="bunny" d="M195 270 C185 295 180 320 190 340 C200 360 220 360 230 345" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
+                    <!-- Torso and hip curve -->
+                    <path class="bunny" d="M240 260 C280 260 310 300 310 350 C310 410 270 445 255 490" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
+                    <!-- Inner leg and outer leg -->
+                    <path class="bunny" d="M255 490 C250 560 255 640 250 700" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
+                    <path class="bunny" d="M310 350 C345 420 330 500 330 570" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
+                    <!-- Shoes -->
+                    <path class="accent" d="M238 700 C225 720 240 735 265 740 C275 742 285 742 295 738" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
+                    <path class="accent" d="M325 570 C355 585 360 600 350 615 C340 630 315 635 300 638" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
+                    <!-- Bow tie and cuff -->
+                    <path class="accent" d="M245 245 L260 235 L275 245 L260 255 Z" fill="none" stroke="#00c8ff" stroke-width="8" />
+                    <path class="accent" d="M300 340 L320 340" fill="none" stroke="#00c8ff" stroke-width="8" />
+                    <!-- Tail -->
+                    <path class="accent" d="M335 390 C355 400 355 420 335 430" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="hero-text">
+                <h1 class="neon flicker">Wellcum Moderfokers</h1>
+                <p class="subtitle">Explora mis proyectos, blog y más. ¡Disfruta del glow!</p>
+                <!-- <a href="#proyectos" onclick="showSection('proyectos')" class="cta-btn">Ver Proyectos</a> -->
+            </div>
         </div>
     </section>
 
     <div class="container">
         <section id="Bien-venido" class="section">
-            <h2 class="neon">Bien venido</h2>
-            <p>Wenas wenas.</p>
+            <h2 class="section-title neon">Bienvenido</h2>
+            <div class="section-content cols-2">
+                <div>
+                    <p>Wenas wenas. Esta es mi guarida digital donde comparto software, ideas y experimentos.</p>
+                    <ul class="feature-list">
+                        <li>Descargas útiles</li>
+                        <li>Recursos creativos</li>
+                        <li>Proyectos abiertos</li>
+                        <li>Blog con actualizaciones</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="proyectos" class="section">
-            <h2 class="neon">Proyectos</h2>
-            <input type="text" id="searchInput" oninput="filterProyectos()" placeholder="Buscar proyectos...">
-            <div class="links" id="proyectos-list">
-                <!-- Los elementos del proyecto se insertarán aquí mediante JavaScript -->
+            <div class="search-bar-wrapper">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar proyectos..." />
+                    <button class="search-btn" aria-label="Buscar">🔍</button>
+                </div>
+                <div id="searchSuggestions" class="suggestions" role="listbox" aria-label="Sugerencias"></div>
             </div>
-            <div class="pagination" id="pagination">
-                <!-- Los enlaces de paginación se insertarán aquí mediante JavaScript -->
-            </div>
+            <h2 class="section-title neon">Proyectos</h2>
+            <div class="links grid" id="proyectos-list"></div>
+            <div class="pagination" id="pagination"></div>
         </section>
 
         <section id="blog" class="section">
-            <h2 class="neon">Blog</h2>
-            <p>Mis proyectos de GitHub:</p>
+            <h2 class="section-title neon">Blog</h2>
+            <p class="section-lead">Mis repositorios de GitHub más recientes:</p>
             <div id="github-projects" class="cards"></div>
         </section>
 
         <section id="contacto" class="section">
-            <h2 class="neon">Contacto</h2>
-            <div class="contact">
-                <div>
+            <h2 class="section-title neon">Contacto</h2>
+            <div class="contact cards-contact">
+                <div class="contact-card">
                     <h3>Email</h3>
                     <p>null</p>
                 </div>
-                <div>
+                <div class="contact-card">
                     <h3>Redes sociales</h3>
-                    <a href="https://discord.gg/wT9D2mqTkX">
-                        <p>Discord</p>
-                    </a>
+                    <a href="https://discord.gg/wT9D2mqTkX" target="_blank" rel="noopener noreferrer">Discord</a>
                 </div>
-                <div>
+                <div class="contact-card">
                     <h3>Teléfono</h3>
                     <p>+123 456 7890</p>
                 </div>
@@ -80,6 +128,17 @@
     </footer>
 
     <script>
+        // NAV Responsive
+        const navToggle = document.createElement('button');
+        navToggle.className = 'nav-toggle';
+        navToggle.setAttribute('aria-label','Menú');
+        navToggle.innerHTML = '<span></span><span></span><span></span>';
+        document.querySelector('header .container').prepend(navToggle);
+        navToggle.addEventListener('click', ()=>{
+            document.querySelector('header nav').classList.toggle('open');
+            navToggle.classList.toggle('active');
+        });
+
         const proyectos = [
             {
                 link: ['https://cuty.io/3TwMHP3bbm'],
@@ -134,34 +193,45 @@
             // Añadir más proyectos aquí si es necesario
         ];
 
-        const proyectosPerPage = 6;
-        let currentPage = 1;
+    const proyectosPerPage = 6;
+    let currentPage = 1;
+    let allSuggestions = [];
+    let filteredProjects = [...proyectos];
 
         function renderProyectos() {
             const proyectosList = document.getElementById('proyectos-list');
             proyectosList.innerHTML = '';
 
+            const data = filteredProjects;
             const start = (currentPage - 1) * proyectosPerPage;
             const end = start + proyectosPerPage;
-            const proyectosToShow = proyectos.slice(start, end);
+            const proyectosToShow = data.slice(start, end);
+
+            if (proyectosToShow.length === 0) {
+                proyectosList.innerHTML = '<p class="no-results">No se encontraron proyectos.</p>';
+                renderPagination();
+                return;
+            }
 
             proyectosToShow.forEach(proyecto => {
-                const div = document.createElement('div');
-                let content = `<img src="${proyecto.img}" alt="project image">`;
-                content += `<p>${proyecto.description}</p>`;
-                content += `<p>${proyecto.password}</p>`;
-                if (proyecto.additional) {
-                    content += `<p>${proyecto.additional}</p>`;
-                }
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                let linksHtml = '';
                 proyecto.title.forEach((title, index) => {
-                    content += `
-                        <a href="${proyecto.link[index]}">
-                            <h3>${title}</h3>
-                        </a>
-                    `;
+                    linksHtml += `<a href="${proyecto.link[index]}" class="mini-btn" target="_blank" rel="noopener">${title}</a>`;
                 });
-                div.innerHTML = content;
-                proyectosList.appendChild(div);
+                card.innerHTML = `
+                    <div class="thumb">
+                        <img src="${proyecto.img}" alt="Imagen proyecto">
+                    </div>
+                    <div class="info">
+                        <h3>${proyecto.description}</h3>
+                        <p class="password">${proyecto.password}</p>
+                        ${proyecto.additional ? `<p class="additional">${proyecto.additional}</p>` : ''}
+                        <div class="actions">${linksHtml}</div>
+                    </div>
+                `;
+                proyectosList.appendChild(card);
             });
 
             renderPagination();
@@ -171,7 +241,7 @@
             const pagination = document.getElementById('pagination');
             pagination.innerHTML = '';
 
-            const totalPages = Math.ceil(proyectos.length / proyectosPerPage);
+            const totalPages = Math.ceil(filteredProjects.length / proyectosPerPage) || 1;
 
             for (let i = 1; i <= totalPages; i++) {
                 const a = document.createElement('a');
@@ -249,26 +319,57 @@
 
         function filterProyectos() {
             const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const proyectosList = document.getElementById('proyectos-list');
-            const proyectosDivs = proyectosList.getElementsByTagName('div');
-
-            for (let i = 0; i < proyectosDivs.length; i++) {
-                const description = proyectosDivs[i].getElementsByTagName('p')[0];
-                const txtValue = description.textContent || description.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    proyectosDivs[i].style.display = '';
-                } else {
-                    proyectosDivs[i].style.display = 'none';
-                }
+            const term = input.value.toLowerCase().trim();
+            // Filter using the full proyectos array so results can come from any page
+            if (!term) {
+                filteredProjects = [...proyectos];
+            } else {
+                filteredProjects = proyectos.filter(p => {
+                    const desc = (p.description || '').toLowerCase();
+                    const titles = (p.title || []).join(' ').toLowerCase();
+                    return desc.includes(term) || titles.includes(term);
+                });
             }
+            currentPage = 1;
+            renderProyectos();
+            updateSuggestions(term);
         }
 
-        // Mostrar la primera sección al cargar la página
-        //document.addEventListener('DOMContentLoaded', function() {
-          //  showSection('Bien-venido');
-            
-        //});
+        function buildSuggestionsSource() {
+            const set = new Set();
+            proyectos.forEach(p => {
+                set.add(p.description.replace(/\.$/, ''));
+                p.title.forEach(t => set.add(t));
+            });
+            allSuggestions = Array.from(set);
+        }
+
+        function updateSuggestions(term) {
+            const box = document.getElementById('searchSuggestions');
+            if (!term) { box.innerHTML=''; box.style.display='none'; return; }
+            const matches = allSuggestions.filter(s => s.toLowerCase().includes(term)).slice(0,5);
+            if (matches.length === 0) { box.innerHTML=''; box.style.display='none'; return; }
+            box.innerHTML = matches.map(m => `<div class="suggestion" role="option">${m}</div>`).join('');
+            box.style.display='block';
+            [...box.children].forEach(child => child.addEventListener('click', ()=>{
+                document.getElementById('searchInput').value = child.textContent;
+                box.style.display='none';
+                filterProyectos();
+            }));
+        }
+
+    document.getElementById('searchInput').addEventListener('input', filterProyectos);
+    document.querySelector('.search-btn').addEventListener('click', filterProyectos);
+    document.getElementById('searchInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); filterProyectos(); }});
+        document.addEventListener('click', (e)=>{
+            if (!e.target.closest('.search-bar-wrapper')) {
+                document.getElementById('searchSuggestions').style.display='none';
+            }
+        });
+
+        // Inicialización
+        buildSuggestionsSource();
+        // Mantener la animación del showcase visible al inicio; no ocultar nada hasta que el usuario navegue
     </script>
 </body>
 </html>
