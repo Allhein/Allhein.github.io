@@ -1,0 +1,162 @@
+/* Tipografía y fondo */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('capibara.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    opacity: 0.9; /* Ajustar la opacidad del fondo del sitio */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Encabezado */
+header {
+    background: rgba(51, 51, 51, 0.8); /* Fondo del encabezado con transparencia */
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #f8f8f8 3px solid;
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+header ul {
+    padding: 0;
+    list-style: none;
+}
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+header #branding { float: left; }
+header #branding h1 { margin: 0; }
+header nav { float: right; margin-top: 10px; }
+
+/* Portada */
+#showcase {
+    min-height: 400px;
+    background: rgba(51, 51, 51, 0.8); /* Fondo del showcase con transparencia */
+    color: #fff;
+    text-align: center;
+    padding-top: 100px;
+}
+#showcase h1 {
+    font-size: 55px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px #000;
+}
+#showcase p { font-size: 20px; }
+
+/* Secciones */
+.section {
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(68, 68, 68, 0.8); /* Fondo de las secciones con transparencia */
+    display: none;
+}
+.section.active { display: block; }
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.section p { font-size: 18px; line-height: 1.5; }
+
+/* Lista de proyectos existente */
+.links {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna */
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.links div {
+    flex-basis: 100%; /* Ocupa el 100% del contenedor */
+    margin: 10px 0;
+    text-align: center;
+}
+.links img {
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.pagination { text-align: center; margin-top: 20px; }
+.pagination a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #fff;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+.pagination a.active {
+    background-color: #e600e6;
+    border-color: #e600e6;
+}
+
+/* Pie de página */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: rgba(51, 51, 51, 0.8); /* Fondo del pie de página con transparencia */
+    color: #fff;
+}
+
+/* Estilo neon */
+.neon {
+    color: #e600e6;
+    text-shadow: 0 0 5px #e600e6, 0 0 10px #e600e6, 0 0 20px #e600e6, 0 0 40px #e600e6, 0 0 80px #e600e6;
+}
+
+/* Tarjetas de repos de GitHub (Blog) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+.card {
+    background: rgba(68, 68, 68, 0.85);
+    border: 1px solid #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-bottom: 1px solid #333;
+}
+.card-content { padding: 12px 14px; color: #fff; }
+.card-title { font-size: 18px; margin: 0 0 8px; color: #e600e6; }
+.card-desc { font-size: 14px; opacity: 0.9; margin: 0 0 10px; }
+.card-meta { font-size: 12px; opacity: 0.75; margin-bottom: 8px; }
+.card-links { display: flex; gap: 8px; }
+.card-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 10px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+.card-links a:hover { background-color: #e600e6; border-color: #e600e6; }
