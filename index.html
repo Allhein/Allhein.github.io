@@ -12,7 +12,7 @@
     <header>
         <div class="container">
             <div id="branding">
-                <h1 class="neon">Arturo Mondae</h1>
+                <h1 class="neon">Isodro Gamos Alcura</h1>
             </div>
             <nav>
                 <ul>
@@ -28,42 +28,11 @@
     <section id="showcase">
         <div class="container showcase-inner">
             <div class="hero-visual">
-                <!-- Neon SVG Animation inspired by provided bunny silhouette -->
-                <svg class="neon-svg" viewBox="0 0 420 760" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <defs>
-                        <filter id="glow2">
-                            <feGaussianBlur stdDeviation="4" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <!-- Ears -->
-                    <path class="accent" d="M210 70 C210 25 245 25 245 75" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
-                    <path class="accent" d="M270 70 C270 25 305 25 305 75" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
-                    <!-- Hair/head profile -->
-                    <path class="bunny" d="M230 120 C210 120 200 140 200 165 C200 205 245 215 265 240 C275 252 280 265 280 280" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
-                    <!-- Shoulder to hand pose -->
-                    <path class="bunny" d="M195 270 C185 295 180 320 190 340 C200 360 220 360 230 345" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
-                    <!-- Torso and hip curve -->
-                    <path class="bunny" d="M240 260 C280 260 310 300 310 350 C310 410 270 445 255 490" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
-                    <!-- Inner leg and outer leg -->
-                    <path class="bunny" d="M255 490 C250 560 255 640 250 700" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
-                    <path class="bunny" d="M310 350 C345 420 330 500 330 570" fill="none" stroke="#ff00c8" stroke-width="8" stroke-linecap="round" />
-                    <!-- Shoes -->
-                    <path class="accent" d="M238 700 C225 720 240 735 265 740 C275 742 285 742 295 738" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
-                    <path class="accent" d="M325 570 C355 585 360 600 350 615 C340 630 315 635 300 638" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
-                    <!-- Bow tie and cuff -->
-                    <path class="accent" d="M245 245 L260 235 L275 245 L260 255 Z" fill="none" stroke="#00c8ff" stroke-width="8" />
-                    <path class="accent" d="M300 340 L320 340" fill="none" stroke="#00c8ff" stroke-width="8" />
-                    <!-- Tail -->
-                    <path class="accent" d="M335 390 C355 400 355 420 335 430" fill="none" stroke="#00c8ff" stroke-width="8" stroke-linecap="round" />
-                </svg>
+                <img class="neon-art" src="Assets/MEMEME.png" alt="Ilustración neon de MEMEME" loading="lazy" />
             </div>
             <div class="hero-text">
-                <h1 class="neon flicker">Wellcum Moderfokers</h1>
-                <p class="subtitle">Explora mis proyectos, blog y más. ¡Disfruta del glow!</p>
+                <h1 class="neon flicker hero-glow">Wellcum Moderfokers</h1>
+                <p class="subtitle glow-text">Explora mis proyectos, blog y más. ¡Disfruta del glow!</p>
                 <!-- <a href="#proyectos" onclick="showSection('proyectos')" class="cta-btn">Ver Proyectos</a> -->
             </div>
         </div>
@@ -94,7 +63,12 @@
                 <div id="searchSuggestions" class="suggestions" role="listbox" aria-label="Sugerencias"></div>
             </div>
             <h2 class="section-title neon">Proyectos</h2>
-            <div class="links grid" id="proyectos-list"></div>
+            <div class="project-layout">
+                <div class="links grid" id="proyectos-list"></div>
+                <aside id="project-detail" class="project-detail" role="region" aria-live="polite" aria-label="Detalle del proyecto">
+                    <div class="project-placeholder">Selecciona un proyecto para ver los detalles.</div>
+                </aside>
+            </div>
             <div class="pagination" id="pagination"></div>
         </section>
 
@@ -113,7 +87,10 @@
                 </div>
                 <div class="contact-card">
                     <h3>Redes sociales</h3>
-                    <a href="https://discord.gg/wT9D2mqTkX" target="_blank" rel="noopener noreferrer">Discord</a>
+                    <a class="contact-icon-link" href="https://discord.gg/wT9D2mqTkX" target="_blank" rel="noopener noreferrer">
+                        <img src="Assets/discord.png" alt="">
+                        <span class="sr-only">Discord</span>
+                    </a>
                 </div>
                 <div class="contact-card">
                     <h3>Teléfono</h3>
@@ -197,6 +174,8 @@
     let currentPage = 1;
     let allSuggestions = [];
     let filteredProjects = [...proyectos];
+    let selectedProjectIndex = null;
+    const detailPlaceholder = '<div class="project-placeholder">Selecciona un proyecto para ver los detalles.</div>';
 
         function renderProyectos() {
             const proyectosList = document.getElementById('proyectos-list');
@@ -210,31 +189,32 @@
             if (proyectosToShow.length === 0) {
                 proyectosList.innerHTML = '<p class="no-results">No se encontraron proyectos.</p>';
                 renderPagination();
+                clearProjectDetail();
                 return;
             }
 
             proyectosToShow.forEach(proyecto => {
-                const card = document.createElement('div');
+                const card = document.createElement('button');
+                card.type = 'button';
                 card.className = 'project-card';
-                let linksHtml = '';
-                proyecto.title.forEach((title, index) => {
-                    linksHtml += `<a href="${proyecto.link[index]}" class="mini-btn" target="_blank" rel="noopener">${title}</a>`;
-                });
+                const globalIndex = proyectos.indexOf(proyecto);
+                const displayName = (proyecto.description || 'Proyecto').replace(/\.$/, '');
+                card.dataset.projectIndex = globalIndex;
+                card.setAttribute('aria-label', displayName);
                 card.innerHTML = `
                     <div class="thumb">
-                        <img src="${proyecto.img}" alt="Imagen proyecto">
+                        <img src="${proyecto.img}" alt="${displayName}">
                     </div>
-                    <div class="info">
-                        <h3>${proyecto.description}</h3>
-                        <p class="password">${proyecto.password}</p>
-                        ${proyecto.additional ? `<p class="additional">${proyecto.additional}</p>` : ''}
-                        <div class="actions">${linksHtml}</div>
+                    <div class="project-summary">
+                        <h3>${displayName}</h3>
                     </div>
                 `;
+                card.addEventListener('click', () => selectProject(globalIndex));
                 proyectosList.appendChild(card);
             });
 
             renderPagination();
+            highlightSelectedProjectCard();
         }
 
         function renderPagination() {
@@ -255,6 +235,67 @@
                 };
                 pagination.appendChild(a);
             }
+        }
+
+        function highlightSelectedProjectCard() {
+            const cards = document.querySelectorAll('#proyectos-list .project-card');
+            cards.forEach(card => {
+                const idx = Number(card.dataset.projectIndex);
+                const isSelected = idx === selectedProjectIndex;
+                card.classList.toggle('selected', isSelected);
+                card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+            });
+        }
+
+        function populateProjectDetail(project) {
+            const detail = document.getElementById('project-detail');
+            if (!project) {
+                detail.innerHTML = detailPlaceholder;
+                detail.classList.remove('active');
+                return;
+            }
+            const displayName = (project.description || 'Proyecto').replace(/\.$/, '');
+            const passwordHtml = project.password ? `<p class="detail-password">${project.password}</p>` : '';
+            const additionalHtml = project.additional ? `<div class="detail-additional">${project.additional}</div>` : '';
+            const linksHtml = (project.link || []).map((href, idx) => {
+                const label = (project.title && project.title[idx]) ? project.title[idx] : `Enlace ${idx + 1}`;
+                return `<a href="${href}" class="mini-btn" target="_blank" rel="noopener">${label}</a>`;
+            }).join('');
+            const actionsHtml = linksHtml ? `<div class="detail-actions">${linksHtml}</div>` : '';
+
+            detail.innerHTML = `
+                <div class="project-detail-card">
+                    <div class="detail-thumb">
+                        <img src="${project.img}" alt="${displayName}">
+                    </div>
+                    <div class="detail-body">
+                        <h3>${displayName}</h3>
+                        ${additionalHtml}
+                        ${passwordHtml}
+                        ${actionsHtml}
+                    </div>
+                </div>
+            `;
+            detail.classList.add('active');
+        }
+
+        function selectProject(index) {
+            const project = proyectos[index];
+            if (!project) return;
+            selectedProjectIndex = index;
+            populateProjectDetail(project);
+            highlightSelectedProjectCard();
+            if (window.matchMedia('(max-width: 1100px)').matches) {
+                document.getElementById('project-detail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function clearProjectDetail() {
+            selectedProjectIndex = null;
+            const detail = document.getElementById('project-detail');
+            detail.innerHTML = detailPlaceholder;
+            detail.classList.remove('active');
+            highlightSelectedProjectCard();
         }
 
         let githubLoaded = false;
@@ -331,6 +372,7 @@
                 });
             }
             currentPage = 1;
+            clearProjectDetail();
             renderProyectos();
             updateSuggestions(term);
         }
