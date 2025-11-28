@@ -9,22 +9,32 @@
     <link rel="stylesheet" href="Assets/styles.css">
 </head>
 <body>
+    <div class="mini-player-bar" id="mini-player-bar" aria-label="Mini reproductor">
+        <button type="button" class="mini-icon" id="player-toggle" aria-label="Reproducir o pausar">▶</button>
+        <button type="button" class="mini-icon" id="player-mute" aria-label="Silenciar o activar audio">🔊</button>
+        <input type="range" id="player-volume" min="0" max="1" step="0.05" value="0.7" aria-label="Volumen" />
+        <button type="button" class="mini-icon" id="player-next" aria-label="Siguiente estación">⏭</button>
+        <div class="track-marquee"><span id="player-track" class="track-text">Cargando...</span></div>
+        <audio id="radio-audio" preload="none" class="mini-hidden"></audio>
+    </div>
+
     <header>
         <div class="container">
             <div id="branding">
-                <h1 class="neon">Isodro Gamos Alcura</h1>
+                <a href="#showcase" class="branding-link" aria-label="Volver al inicio">
+                    <h1 class="neon">Isodro Gamos Alcura</h1>
+                </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#Bienvenido" onclick="showSection('Bien-venido')">Bien Venido🥵</a></li>
-                    <li><a href="#Proyectos" onclick="showSection('proyectos')">Proyectos</a></li>
-                    <li><a href="#Blog" onclick="showSection('blog')">Blog</a></li>
-                    <li><a href="#Contacto" onclick="showSection('contacto')">Contacto</a></li>
+                    <li><a href="#Bien-venido" onclick="showSection('Bien-venido'); return false;">Bien Venido🥵</a></li>
+                    <li><a href="#proyectos" onclick="showSection('proyectos'); return false;">Proyectos</a></li>
+                    <li><a href="#blog" onclick="showSection('blog'); return false;">Blog</a></li>
+                    <li><a href="#contacto" onclick="showSection('contacto'); return false;">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
     <section id="showcase">
         <div class="container showcase-inner">
             <div class="hero-visual">
@@ -55,17 +65,20 @@
         </section>
 
         <section id="proyectos" class="section">
-            <div class="search-bar-wrapper">
-                <div class="search-bar">
-                    <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar proyectos..." />
-                    <button class="search-btn" aria-label="Buscar">🔍</button>
+            <div class="project-tools">
+                <div class="search-bar-wrapper">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar proyectos..." />
+                        <button class="search-btn" aria-label="Buscar">🔍</button>
+                    </div>
+                    <div id="searchSuggestions" class="suggestions" role="listbox" aria-label="Sugerencias"></div>
                 </div>
-                <div id="searchSuggestions" class="suggestions" role="listbox" aria-label="Sugerencias"></div>
+
             </div>
             <h2 class="section-title neon">Proyectos</h2>
             <div class="project-layout">
                 <div class="links grid" id="proyectos-list"></div>
-                <aside id="project-detail" class="project-detail" role="region" aria-live="polite" aria-label="Detalle del proyecto">
+                <aside id="project-detail" class="project-detail" role="region" aria-live="polite" aria-label="Detalle del proyecto" tabindex="-1">
                     <div class="project-placeholder">Selecciona un proyecto para ver los detalles.</div>
                 </aside>
             </div>
@@ -87,7 +100,7 @@
                 </div>
                 <div class="contact-card">
                     <h3>Redes sociales</h3>
-                    <a class="contact-icon-link" href="https://discord.gg/wT9D2mqTkX" target="_blank" rel="noopener noreferrer">
+                    <a class="contact-icon-link" href="https://discord.gg/t33uhnKKFn" target="_blank" rel="noopener noreferrer">
                         <img src="Assets/discord.png" alt="">
                         <span class="sr-only">Discord</span>
                     </a>
