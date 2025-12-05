@@ -1,4 +1,4 @@
-import supabase from './supabaseClient.js';
+import supabase, { SUPABASE_URL, SUPABASE_ANON_KEY } from './supabaseClient.js';
 
 const proyectosPerPage = 6;
 let currentPage = 1;
@@ -40,12 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavToggle();
     wireSearchEvents();
     wireBrandingLink();
+    wireNavLinks();
     window.showSection = showSection;
     buildSuggestionsSource();
     loadProyectosFromSupabase();
     initRadioPlayer();
-        startSupabaseHeartbeatMonitor();
-        handleInitialHash();
+    startSupabaseHeartbeatMonitor();
+    handleInitialHash();
+    window.addEventListener('hashchange', handleInitialHash);
 });
 
 function wireBrandingLink() {
@@ -54,6 +56,20 @@ function wireBrandingLink() {
     brandingLink.addEventListener('click', (event) => {
         event.preventDefault();
         resetToShowcase();
+    });
+}
+
+function wireNavLinks() {
+    const links = document.querySelectorAll('header nav a[href^="#"]');
+    if (!links || links.length === 0) return;
+    links.forEach((a) => {
+        a.addEventListener('click', (e) => {
+            const href = a.getAttribute('href') || '';
+            const id = resolveHash(href);
+            if (!id) return;
+            e.preventDefault();
+            showSection(id);
+        });
     });
 }
 
@@ -129,6 +145,25 @@ async function sendSupabaseHeartbeat() {
     }
 }
 
+async function fetchProyectosViaRest() {
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return [];
+    const url = `${SUPABASE_URL}/rest/v1/proyectos?select=id,links,titles,img,description,password,additional,alternatives,created_at&order=created_at.desc`;
+    try {
+        const res = await fetch(url, {
+            headers: {
+                apikey: SUPABASE_ANON_KEY,
+                Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+                Accept: 'application/json'
+            }
+        });
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+    } catch {
+        return [];
+    }
+}
+
 function initRadioPlayer() {
     const audio = document.getElementById('radio-audio');
     const track = document.getElementById('player-track');
@@ -147,7 +182,7 @@ function initRadioPlayer() {
         audio.src = station.url;
         adjustMarquee();
         if (radioState.isPlaying) {
-            audio.play().catch(() => {});
+            audio.play().catch(() => { });
         }
     };
 
@@ -219,7 +254,7 @@ function initRadioPlayer() {
 // Adjust marquee speed based on text length
 function adjustMarquee() {
     const el = document.getElementById('player-track');
-    if(!el) return;
+    if (!el) return;
     const len = el.textContent.length;
     const base = 14; // seconds
     const speed = Math.min(38, Math.max(base, len * 0.55));
@@ -237,22 +272,22 @@ async function loadProyectosFromSupabase() {
         proyectosList.innerHTML = '<p class="loading">Cargando proyectos...</p>';
     }
 
-    if (!supabase) {
-        if (proyectosList) {
-            proyectosList.innerHTML = '<p class="no-results">Configura Supabase para mostrar los proyectos.</p>';
-        }
-        loadingProyectos = false;
-        return;
-    }
+    let data = null;
 
     try {
-        attemptedSupabaseFetch = true;
-        const { data, error } = await supabase
-            .from('proyectos')
-            .select('id, links, titles, img, description, password, additional, alternatives, created_at')
-            .order('created_at', { ascending: false });
+        if (supabase) {
+            attemptedSupabaseFetch = true;
+            const { data: supaData, error: supaError } = await supabase
+                .from('proyectos')
+                .select('id, links, titles, img, description, password, additional, alternatives, created_at')
+                .order('created_at', { ascending: false });
+            if (supaError) throw supaError;
+            data = supaData;
+        }
 
-        if (error) throw error;
+        if (!data) {
+            data = await fetchProyectosViaRest();
+        }
 
         proyectos = Array.isArray(data) ? data.map(normalizeProject) : [];
         filteredProjects = [...proyectos];
@@ -510,6 +545,9 @@ function resetToShowcase(options = {}) {
 
 function handleInitialHash() {
     const resolved = resolveHash(window.location.hash);
+    if (resolved === 'project-detail') {
+        return;
+    }
     if (!resolved || resolved === 'showcase') {
         resetToShowcase({ updateHash: false });
         return;
